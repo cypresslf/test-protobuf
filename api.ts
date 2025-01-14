@@ -6,11 +6,6 @@ import {
   Temperature,
 } from "./datatypes";
 
-const subjects = {
-  temperature: Temperature,
-  simpleMessage: SimpleMessage,
-};
-
 type SubjectInput =
   | { subject: "temperature"; value: ITemperature }
   | { subject: "simpleMessage"; value: ISimpleMessage };
@@ -19,23 +14,12 @@ type Subscription =
   | { subject: "temperature"; callback: (msg: ITemperature) => void }
   | { subject: "simpleMessage"; callback: (msg: ISimpleMessage) => void };
 
-type SubjectName = keyof typeof subjects;
-
-export const Server = {
-  init: (connection: NatsConnection) => {
-    return {
-      publish: (input: SubjectInput) => {
-        const message = encodeMessage(input);
-        connection.publish(input.subject, message);
-      },
-      connection,
-    };
-  },
-};
-
 export const Client = {
   init: (connection: NatsConnection) => {
     return {
+      publish: (input: SubjectInput) => {
+        connection.publish(input.subject, encodeMessage(input));
+      },
       subscribe: (subscription: Subscription) => {
         connection.subscribe(subscription.subject, {
           callback: (err, msg) => {

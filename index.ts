@@ -1,9 +1,8 @@
 import { connect } from "@nats-io/transport-node";
-import { Client, Server } from "./api";
+import { Client } from "./api";
 
 const connection = await connect({ servers: "demo.nats.io" });
 
-const server = Server.init(connection);
 const client = Client.init(connection);
 
 client.subscribe({
@@ -20,7 +19,7 @@ client.subscribe({
   },
 });
 
-server.publish({
+client.publish({
   subject: "simpleMessage",
   value: {
     id: "123",
@@ -28,6 +27,6 @@ server.publish({
   },
 });
 
-server.publish({ subject: "temperature", value: { value: 42 } });
+client.publish({ subject: "temperature", value: { value: 42 } });
 
 await connection.drain();
