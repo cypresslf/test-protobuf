@@ -13,3 +13,5 @@ To update the data types, modify `datatypes.proto`, then
  bun run pbjs -t static-module -w es6 -o datatypes.js datatypes.proto
  bun run pbts -o datatypes.d.ts datatypes.js
 ```
+
+In the future, we should ideally autogenerate `api.ts` based on `datatypes.proto` as well.
