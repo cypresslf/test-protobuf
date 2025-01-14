@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@nats-io/transport-node": "^3.0.0-33",
+    "protobufjs": "^7.4.0"
+  },
+  "devDependencies": {
+    "protobufjs-cli": "^1.1.3"
+  }
+}

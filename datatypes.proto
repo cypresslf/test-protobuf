@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message SimpleMessage {
+  required string id = 1;
+  required string content = 2;
+}
+
+message Temperature {
+  required float value = 1;
+}
