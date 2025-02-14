@@ -7,26 +7,18 @@ const client = Client.init(connection);
 
 client.subscribe({
   subject: "simpleMessage",
-  callback: (msg) => {
-    console.log(msg);
-  },
+  callback: console.log,
 });
 
 client.subscribe({
   subject: "temperature",
-  callback: (msg) => {
-    console.log(msg);
-  },
+  callback: console.log,
 });
 
-client.publish({
-  subject: "simpleMessage",
-  value: {
-    id: "123",
-    content: "Hello, Protobuf!",
-  },
+client.subscribe({
+  subject: "oopsAllTypes",
+  callback: console.log,
 });
-
-client.publish({ subject: "temperature", value: { value: 42 } });
+client.publish({ subject: "oopsAllTypes", value: { bool: false } });
 
 await connection.drain();
