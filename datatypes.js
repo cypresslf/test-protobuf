@@ -291,7 +291,7 @@ export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
         if (!writer)
             writer = $Writer.create();
         if (message.content != null && Object.hasOwnProperty.call(message, "content"))
-            writer.uint32(/* id 2, wireType 2 =*/18).string(message.content);
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.content);
         return writer;
     };
 
@@ -326,7 +326,7 @@ export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
         while (reader.pos < end) {
             let tag = reader.uint32();
             switch (tag >>> 3) {
-            case 2: {
+            case 1: {
                     message.content = reader.string();
                     break;
                 }
