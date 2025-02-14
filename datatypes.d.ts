@@ -106,9 +106,6 @@ export class SimpleMessage implements ISimpleMessage {
 /** Properties of a SimpleMessageClone. */
 export interface ISimpleMessageClone {
 
-    /** SimpleMessageClone id */
-    id?: (string|null);
-
     /** SimpleMessageClone content */
     content?: (string|null);
 }
@@ -121,9 +118,6 @@ export class SimpleMessageClone implements ISimpleMessageClone {
      * @param [properties] Properties to set
      */
     constructor(properties?: ISimpleMessageClone);
-
-    /** SimpleMessageClone id. */
-    public id: string;
 
     /** SimpleMessageClone content. */
     public content: string;

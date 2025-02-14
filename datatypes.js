@@ -240,7 +240,6 @@ export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
      * Properties of a SimpleMessageClone.
      * @exports ISimpleMessageClone
      * @interface ISimpleMessageClone
-     * @property {string|null} [id] SimpleMessageClone id
      * @property {string|null} [content] SimpleMessageClone content
      */
 
@@ -258,14 +257,6 @@ export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
                 if (properties[keys[i]] != null)
                     this[keys[i]] = properties[keys[i]];
     }
-
-    /**
-     * SimpleMessageClone id.
-     * @member {string} id
-     * @memberof SimpleMessageClone
-     * @instance
-     */
-    SimpleMessageClone.prototype.id = "";
 
     /**
      * SimpleMessageClone content.
@@ -299,8 +290,6 @@ export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
     SimpleMessageClone.encode = function encode(message, writer) {
         if (!writer)
             writer = $Writer.create();
-        if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-            writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
         if (message.content != null && Object.hasOwnProperty.call(message, "content"))
             writer.uint32(/* id 2, wireType 2 =*/18).string(message.content);
         return writer;
@@ -337,10 +326,6 @@ export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
         while (reader.pos < end) {
             let tag = reader.uint32();
             switch (tag >>> 3) {
-            case 1: {
-                    message.id = reader.string();
-                    break;
-                }
             case 2: {
                     message.content = reader.string();
                     break;
@@ -380,9 +365,6 @@ export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
     SimpleMessageClone.verify = function verify(message) {
         if (typeof message !== "object" || message === null)
             return "object expected";
-        if (message.id != null && message.hasOwnProperty("id"))
-            if (!$util.isString(message.id))
-                return "id: string expected";
         if (message.content != null && message.hasOwnProperty("content"))
             if (!$util.isString(message.content))
                 return "content: string expected";
@@ -401,8 +383,6 @@ export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
         if (object instanceof $root.SimpleMessageClone)
             return object;
         let message = new $root.SimpleMessageClone();
-        if (object.id != null)
-            message.id = String(object.id);
         if (object.content != null)
             message.content = String(object.content);
         return message;
@@ -421,12 +401,8 @@ export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
         if (!options)
             options = {};
         let object = {};
-        if (options.defaults) {
-            object.id = "";
+        if (options.defaults)
             object.content = "";
-        }
-        if (message.id != null && message.hasOwnProperty("id"))
-            object.id = message.id;
         if (message.content != null && message.hasOwnProperty("content"))
             object.content = message.content;
         return object;

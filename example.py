@@ -1,16 +1,16 @@
-from datatypes_pb2 import SimpleMessage
+from datatypes_pb2 import SimpleMessage, SimpleMessageClone
 
 
 def main():
-    msg: SimpleMessage = SimpleMessage(content="hi there", id="asdf")
-    print("Original message:", msg)
+    message: SimpleMessage = SimpleMessage(content="hi there", id="asdf")
+    print("Original message:", message)
 
-    serialized = msg.SerializeToString()
+    serialized = message.SerializeToString()
     print("Serialized:", serialized)
 
-    msg2 = SimpleMessage()
-    msg2.ParseFromString(serialized)
-    print("Deserialized message:", msg2)
+    message_2 = SimpleMessageClone()
+    message_2.ParseFromString(serialized)
+    print("Deserialized message:", message_2)
 
 
 if __name__ == "__main__":

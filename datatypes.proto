@@ -6,7 +6,6 @@ message SimpleMessage {
 }
 
 message SimpleMessageClone {
-   string id = 1;
    string content = 2;
 }
 

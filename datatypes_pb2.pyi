@@ -13,12 +13,10 @@ class SimpleMessage(_message.Message):
     def __init__(self, id: _Optional[str] = ..., content: _Optional[str] = ...) -> None: ...
 
 class SimpleMessageClone(_message.Message):
-    __slots__ = ("id", "content")
-    ID_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ("content",)
     CONTENT_FIELD_NUMBER: _ClassVar[int]
-    id: str
     content: str
-    def __init__(self, id: _Optional[str] = ..., content: _Optional[str] = ...) -> None: ...
+    def __init__(self, content: _Optional[str] = ...) -> None: ...
 
 class Temperature(_message.Message):
     __slots__ = ("value",)
