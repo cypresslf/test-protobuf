@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x64\x61tatypes.proto\",\n\rSimpleMessage\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"\x1c\n\x0bTemperature\x12\r\n\x05value\x18\x01 \x01(\x02\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x64\x61tatypes.proto\",\n\rSimpleMessage\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"1\n\x12SimpleMessageClone\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"\x1c\n\x0bTemperature\x12\r\n\x05value\x18\x01 \x01(\x02\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,6 +33,8 @@ if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_SIMPLEMESSAGE']._serialized_start=19
   _globals['_SIMPLEMESSAGE']._serialized_end=63
-  _globals['_TEMPERATURE']._serialized_start=65
-  _globals['_TEMPERATURE']._serialized_end=93
+  _globals['_SIMPLEMESSAGECLONE']._serialized_start=65
+  _globals['_SIMPLEMESSAGECLONE']._serialized_end=114
+  _globals['_TEMPERATURE']._serialized_start=116
+  _globals['_TEMPERATURE']._serialized_end=144
 # @@protoc_insertion_point(module_scope)

@@ -234,6 +234,233 @@ export const SimpleMessage = $root.SimpleMessage = (() => {
     return SimpleMessage;
 })();
 
+export const SimpleMessageClone = $root.SimpleMessageClone = (() => {
+
+    /**
+     * Properties of a SimpleMessageClone.
+     * @exports ISimpleMessageClone
+     * @interface ISimpleMessageClone
+     * @property {string|null} [id] SimpleMessageClone id
+     * @property {string|null} [content] SimpleMessageClone content
+     */
+
+    /**
+     * Constructs a new SimpleMessageClone.
+     * @exports SimpleMessageClone
+     * @classdesc Represents a SimpleMessageClone.
+     * @implements ISimpleMessageClone
+     * @constructor
+     * @param {ISimpleMessageClone=} [properties] Properties to set
+     */
+    function SimpleMessageClone(properties) {
+        if (properties)
+            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * SimpleMessageClone id.
+     * @member {string} id
+     * @memberof SimpleMessageClone
+     * @instance
+     */
+    SimpleMessageClone.prototype.id = "";
+
+    /**
+     * SimpleMessageClone content.
+     * @member {string} content
+     * @memberof SimpleMessageClone
+     * @instance
+     */
+    SimpleMessageClone.prototype.content = "";
+
+    /**
+     * Creates a new SimpleMessageClone instance using the specified properties.
+     * @function create
+     * @memberof SimpleMessageClone
+     * @static
+     * @param {ISimpleMessageClone=} [properties] Properties to set
+     * @returns {SimpleMessageClone} SimpleMessageClone instance
+     */
+    SimpleMessageClone.create = function create(properties) {
+        return new SimpleMessageClone(properties);
+    };
+
+    /**
+     * Encodes the specified SimpleMessageClone message. Does not implicitly {@link SimpleMessageClone.verify|verify} messages.
+     * @function encode
+     * @memberof SimpleMessageClone
+     * @static
+     * @param {ISimpleMessageClone} message SimpleMessageClone message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    SimpleMessageClone.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.id != null && Object.hasOwnProperty.call(message, "id"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+        if (message.content != null && Object.hasOwnProperty.call(message, "content"))
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.content);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified SimpleMessageClone message, length delimited. Does not implicitly {@link SimpleMessageClone.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof SimpleMessageClone
+     * @static
+     * @param {ISimpleMessageClone} message SimpleMessageClone message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    SimpleMessageClone.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a SimpleMessageClone message from the specified reader or buffer.
+     * @function decode
+     * @memberof SimpleMessageClone
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {SimpleMessageClone} SimpleMessageClone
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    SimpleMessageClone.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.SimpleMessageClone();
+        while (reader.pos < end) {
+            let tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.id = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.content = reader.string();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a SimpleMessageClone message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof SimpleMessageClone
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {SimpleMessageClone} SimpleMessageClone
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    SimpleMessageClone.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a SimpleMessageClone message.
+     * @function verify
+     * @memberof SimpleMessageClone
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    SimpleMessageClone.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.id != null && message.hasOwnProperty("id"))
+            if (!$util.isString(message.id))
+                return "id: string expected";
+        if (message.content != null && message.hasOwnProperty("content"))
+            if (!$util.isString(message.content))
+                return "content: string expected";
+        return null;
+    };
+
+    /**
+     * Creates a SimpleMessageClone message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof SimpleMessageClone
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {SimpleMessageClone} SimpleMessageClone
+     */
+    SimpleMessageClone.fromObject = function fromObject(object) {
+        if (object instanceof $root.SimpleMessageClone)
+            return object;
+        let message = new $root.SimpleMessageClone();
+        if (object.id != null)
+            message.id = String(object.id);
+        if (object.content != null)
+            message.content = String(object.content);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a SimpleMessageClone message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof SimpleMessageClone
+     * @static
+     * @param {SimpleMessageClone} message SimpleMessageClone
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    SimpleMessageClone.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        let object = {};
+        if (options.defaults) {
+            object.id = "";
+            object.content = "";
+        }
+        if (message.id != null && message.hasOwnProperty("id"))
+            object.id = message.id;
+        if (message.content != null && message.hasOwnProperty("content"))
+            object.content = message.content;
+        return object;
+    };
+
+    /**
+     * Converts this SimpleMessageClone to JSON.
+     * @function toJSON
+     * @memberof SimpleMessageClone
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    SimpleMessageClone.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for SimpleMessageClone
+     * @function getTypeUrl
+     * @memberof SimpleMessageClone
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    SimpleMessageClone.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/SimpleMessageClone";
+    };
+
+    return SimpleMessageClone;
+})();
+
 export const Temperature = $root.Temperature = (() => {
 
     /**

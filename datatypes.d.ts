@@ -103,6 +103,109 @@ export class SimpleMessage implements ISimpleMessage {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
+/** Properties of a SimpleMessageClone. */
+export interface ISimpleMessageClone {
+
+    /** SimpleMessageClone id */
+    id?: (string|null);
+
+    /** SimpleMessageClone content */
+    content?: (string|null);
+}
+
+/** Represents a SimpleMessageClone. */
+export class SimpleMessageClone implements ISimpleMessageClone {
+
+    /**
+     * Constructs a new SimpleMessageClone.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: ISimpleMessageClone);
+
+    /** SimpleMessageClone id. */
+    public id: string;
+
+    /** SimpleMessageClone content. */
+    public content: string;
+
+    /**
+     * Creates a new SimpleMessageClone instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns SimpleMessageClone instance
+     */
+    public static create(properties?: ISimpleMessageClone): SimpleMessageClone;
+
+    /**
+     * Encodes the specified SimpleMessageClone message. Does not implicitly {@link SimpleMessageClone.verify|verify} messages.
+     * @param message SimpleMessageClone message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: ISimpleMessageClone, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified SimpleMessageClone message, length delimited. Does not implicitly {@link SimpleMessageClone.verify|verify} messages.
+     * @param message SimpleMessageClone message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: ISimpleMessageClone, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a SimpleMessageClone message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns SimpleMessageClone
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SimpleMessageClone;
+
+    /**
+     * Decodes a SimpleMessageClone message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns SimpleMessageClone
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SimpleMessageClone;
+
+    /**
+     * Verifies a SimpleMessageClone message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a SimpleMessageClone message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns SimpleMessageClone
+     */
+    public static fromObject(object: { [k: string]: any }): SimpleMessageClone;
+
+    /**
+     * Creates a plain object from a SimpleMessageClone message. Also converts values to other types if specified.
+     * @param message SimpleMessageClone
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: SimpleMessageClone, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this SimpleMessageClone to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for SimpleMessageClone
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
 /** Properties of a Temperature. */
 export interface ITemperature {
 

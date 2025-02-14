@@ -5,6 +5,11 @@ message SimpleMessage {
    string content = 2;
 }
 
+message SimpleMessageClone {
+   string id = 1;
+   string content = 2;
+}
+
 message Temperature {
    float value = 1;
 }
