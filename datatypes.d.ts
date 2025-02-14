@@ -4,10 +4,10 @@ import Long = require("long");
 export interface ISimpleMessage {
 
     /** SimpleMessage id */
-    id: string;
+    id?: (string|null);
 
     /** SimpleMessage content */
-    content: string;
+    content?: (string|null);
 }
 
 /** Represents a SimpleMessage. */
@@ -107,7 +107,7 @@ export class SimpleMessage implements ISimpleMessage {
 export interface ITemperature {
 
     /** Temperature value */
-    value: number;
+    value?: (number|null);
 }
 
 /** Represents a Temperature. */

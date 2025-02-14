@@ -13,8 +13,8 @@ export const SimpleMessage = $root.SimpleMessage = (() => {
      * Properties of a SimpleMessage.
      * @exports ISimpleMessage
      * @interface ISimpleMessage
-     * @property {string} id SimpleMessage id
-     * @property {string} content SimpleMessage content
+     * @property {string|null} [id] SimpleMessage id
+     * @property {string|null} [content] SimpleMessage content
      */
 
     /**
@@ -72,8 +72,10 @@ export const SimpleMessage = $root.SimpleMessage = (() => {
     SimpleMessage.encode = function encode(message, writer) {
         if (!writer)
             writer = $Writer.create();
-        writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
-        writer.uint32(/* id 2, wireType 2 =*/18).string(message.content);
+        if (message.id != null && Object.hasOwnProperty.call(message, "id"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+        if (message.content != null && Object.hasOwnProperty.call(message, "content"))
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.content);
         return writer;
     };
 
@@ -121,10 +123,6 @@ export const SimpleMessage = $root.SimpleMessage = (() => {
                 break;
             }
         }
-        if (!message.hasOwnProperty("id"))
-            throw $util.ProtocolError("missing required 'id'", { instance: message });
-        if (!message.hasOwnProperty("content"))
-            throw $util.ProtocolError("missing required 'content'", { instance: message });
         return message;
     };
 
@@ -155,10 +153,12 @@ export const SimpleMessage = $root.SimpleMessage = (() => {
     SimpleMessage.verify = function verify(message) {
         if (typeof message !== "object" || message === null)
             return "object expected";
-        if (!$util.isString(message.id))
-            return "id: string expected";
-        if (!$util.isString(message.content))
-            return "content: string expected";
+        if (message.id != null && message.hasOwnProperty("id"))
+            if (!$util.isString(message.id))
+                return "id: string expected";
+        if (message.content != null && message.hasOwnProperty("content"))
+            if (!$util.isString(message.content))
+                return "content: string expected";
         return null;
     };
 
@@ -240,7 +240,7 @@ export const Temperature = $root.Temperature = (() => {
      * Properties of a Temperature.
      * @exports ITemperature
      * @interface ITemperature
-     * @property {number} value Temperature value
+     * @property {number|null} [value] Temperature value
      */
 
     /**
@@ -290,7 +290,8 @@ export const Temperature = $root.Temperature = (() => {
     Temperature.encode = function encode(message, writer) {
         if (!writer)
             writer = $Writer.create();
-        writer.uint32(/* id 1, wireType 5 =*/13).float(message.value);
+        if (message.value != null && Object.hasOwnProperty.call(message, "value"))
+            writer.uint32(/* id 1, wireType 5 =*/13).float(message.value);
         return writer;
     };
 
@@ -334,8 +335,6 @@ export const Temperature = $root.Temperature = (() => {
                 break;
             }
         }
-        if (!message.hasOwnProperty("value"))
-            throw $util.ProtocolError("missing required 'value'", { instance: message });
         return message;
     };
 
@@ -366,8 +365,9 @@ export const Temperature = $root.Temperature = (() => {
     Temperature.verify = function verify(message) {
         if (typeof message !== "object" || message === null)
             return "object expected";
-        if (typeof message.value !== "number")
-            return "value: number expected";
+        if (message.value != null && message.hasOwnProperty("value"))
+            if (typeof message.value !== "number")
+                return "value: number expected";
         return null;
     };
 
