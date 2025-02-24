@@ -20,5 +20,9 @@ client.subscribe({
   callback: console.log,
 });
 client.publish({ subject: "oopsAllTypes", value: { bool: false } });
+client.publish({
+  subject: "simpleMessage",
+  value: { content: "Hello, World!" },
+});
 
 await connection.drain();
